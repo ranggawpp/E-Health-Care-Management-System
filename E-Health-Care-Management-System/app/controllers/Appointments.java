@@ -1,4 +1,9 @@
 package controllers;
 
-public class Appointments extends CRUD {
+import play.*;
+import play.mvc.*;
+
+@With(Secure.class)
+public class Appointments extends CRUD{
+    
 }

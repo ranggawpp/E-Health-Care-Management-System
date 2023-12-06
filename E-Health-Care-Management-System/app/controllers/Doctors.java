@@ -1,5 +1,9 @@
 package controllers;
 
-public class Doctors extends CRUD {
-	
+import play.*;
+import play.mvc.*;
+
+@With(Secure.class)
+public class Doctors extends CRUD{
+    
 }
