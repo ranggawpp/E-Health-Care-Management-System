@@ -1,19 +1,27 @@
 package models;
 
-import play.*;
-import play.db.jpa.*;
- 
-import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.*;
-import java.time.*;
+import javax.persistence.*;
 
+import play.db.jpa.*;
 
 @Entity
-public class Transaction extends Model{
-	private int _transactionId;
-	private int _patientId;
-	private int _appointmentId;
-	private LocalDate _paymentDate;
-	private float _paymentAmount;
-	public Patient _patient;
+public class Transaction extends Model {
+
+    @ManyToOne
+    public Patient patient;
+
+    @ManyToOne
+    public Appointment appointment;
+
+    @Column(nullable = false)
+    public Date paymentDate;
+
+    @Column(nullable = false)
+    public BigDecimal paymentAmount; 
+
+    public Transaction(BigDecimal paymentAmount){
+        this.paymentAmount = paymentAmount;
+    }
 }

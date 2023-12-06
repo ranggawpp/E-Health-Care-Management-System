@@ -7,30 +7,15 @@ import javax.persistence.*;
 import java.util.*;
 
 
-import java.util.Vector;
-
 @Entity
 public class Doctor extends User {
-	public int _doctorId;
-	public int _departementId;
-	public Department _department;
-	public Vector<Medical_Report> _medical_Reports = new Vector<Medical_Report>();
-	public Vector<Patient> _patients = new Vector<Patient>();
-	public Vector<Prescription> _prescriptions = new Vector<Prescription>();
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long doctorId;
 
-	public void getAppointments() {
-		throw new UnsupportedOperationException();
-	}
+    @ManyToOne
+    public Department department;
 
-	public void getPatients() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void addPrescription() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void editMedicalReport() {
-		throw new UnsupportedOperationException();
-	}
+    public Doctor(UserType userType, String username, String password, String fullName, Gender gender, Date DOB, int age, String address) {
+        super(UserType.DOCTOR, username, password, fullName, gender, DOB, age, address);
+    }
 }

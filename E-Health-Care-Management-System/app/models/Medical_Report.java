@@ -2,20 +2,22 @@ package models;
 
 import play.*;
 import play.db.jpa.*;
- 
-import javax.persistence.*;
+
 import java.util.*;
-import java.time.*;
+import javax.persistence.*;
 
 
 @Entity
 public class Medical_Report extends Model{
-	private int _reportId;
-	private String _reportDetail;
-	private LocalDate _reportDate;
-	private String _patientName;
-	private int _patientId;
-	private int _doctorId;
-	public Patient _patient;
-	//public Doctors _doctor;
+    @ManyToOne
+    public Patient patient; // Use Patient instead of String _patientName
+
+    @ManyToOne
+    public Doctor doctor; // Use Doctor instead of commented-out _doctor
+
+    @Column(nullable = false)
+    public Date reportDate;
+
+    @Column(nullable = false)
+    public String reportDetail;
 }

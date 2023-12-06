@@ -1,36 +1,51 @@
 package models;
 
-import play.*;
 import play.db.jpa.*;
- 
-import javax.persistence.*;
-import java.util.*;
+import play.data.validation.*;
 
+import java.sql.Time;
+import java.util.*;
+import javax.persistence.*;
 
 @Entity
 public class User extends Model{
-	public String _username;
-	public String _password;
-	private int _userId;
-	public String _name;
-	public String _gender;
-	public String _dOB;
-	public String _address;
-	public int _phone;
+    @Required
+    @Column(unique = true, nullable = false)
+    public String username;
 
-	public void Login() {
-		throw new UnsupportedOperationException();
-	}
+    @Required
+    @Column(nullable = false)
+    public String password;
+    @Required
+    public UserType userType;
+    @Required
+    public String fullName;
+    @Required
+    public Gender gender;
+    @Required
+    public Date DOB;
+    @Required
+    public int age;
+    @Required
+    public String address;
 
-	public void Logout() {
-		throw new UnsupportedOperationException();
-	}
+    public User(UserType userType, String username, String password, String fullName,
+                Gender gender, Date DOB, int age, String address){
+                    this.userType = userType;
+                    this.username = username;
+                    this.password = password;
+                    this.fullName = fullName;
+                    this.gender = gender;
+                    this.DOB = DOB;
+                    this.age = age;
+                    this.address = address;
+                }
 
-	public void ChangePassword() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void ChangeInformation() {
-		throw new UnsupportedOperationException();
-	}
+    public static User connect(String username, String password) {
+        return find("username=:username and password=:password")
+            .setParameter("username", username)
+            .setParameter("password", password)
+            .first();
+      
+    }
 }

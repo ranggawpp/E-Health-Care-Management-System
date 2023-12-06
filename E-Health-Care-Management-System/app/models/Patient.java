@@ -1,41 +1,20 @@
 package models;
 
-import play.*;
-import play.db.jpa.*;
- 
-import javax.persistence.*;
 import java.util.*;
+import javax.persistence.*;
 
-
-import java.util.Vector;
+import play.db.jpa.*;
 
 @Entity
-public class Patient extends User {
-	public int _patientId;
-	public int _doctorId;
-	//public Doctors _doctor;
-	public Vector<Prescription> _prescriptions = new Vector<Prescription>();
-	public Vector<Medical_Report> _medical_Reports = new Vector<Medical_Report>();
-	//public Vector<Transactions> _transactions = new Vector<Transactions>();
-	public Vector<Appointment> _appointments = new Vector<Appointment>();
+public class Patient extends User{
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long patientId;
 
-	public void getAppointments() {
-		throw new UnsupportedOperationException();
-	}
+    public Blood bloodType;
 
-	public void viewMedicalReport() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void bookAppointment() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void cancelAppointment() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void makePayment() {
-		throw new UnsupportedOperationException();
-	}
+    public Patient(String username, String password, String fullName,
+                Gender gender, Date DOB, int age, String address, Blood bloodType) {
+        super(UserType.PATIENT, username, password, fullName, gender, DOB, age, address);
+        this.bloodType = bloodType;
+    }
 }

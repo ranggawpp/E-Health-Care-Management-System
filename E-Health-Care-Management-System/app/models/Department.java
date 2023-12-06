@@ -3,13 +3,16 @@ package models;
 import play.*;
 import play.db.jpa.*;
  
-import javax.persistence.*;
 import java.util.*;
+import javax.persistence.*;
 
 
 @Entity
 public class Department extends Model{
-	public int _departementId;
-	public String _departementName;
-	//public Doctors _doctor;
+	 @Column(nullable = false)
+    public String name;
+
+    public Department(String name) {
+        this.name = name;
+    }
 }
