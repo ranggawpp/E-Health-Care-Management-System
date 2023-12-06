@@ -8,7 +8,7 @@ import java.util.*;
 import models.*;
  
 @With(Secure.class)
-public class Admin extends Controller {
+public class Pages extends Controller {
     
     @Before
     static void setConnectedUser() {
