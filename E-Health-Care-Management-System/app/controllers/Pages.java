@@ -17,9 +17,26 @@ public class Pages extends Controller {
             renderArgs.put("user", user.fullName);
         }
     }
- 
+
+    public static void login() {
+        render();
+    }
+    
     public static void index() {
         render();
     }
+
+    public static void admin() {
+        render();
+    }
+
+    public static void doctor() {
+        render();
+    }
+
+    public static void patient() {
+        render();
+    }
+    
     
 }
