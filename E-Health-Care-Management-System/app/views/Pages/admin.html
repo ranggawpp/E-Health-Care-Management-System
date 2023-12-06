@@ -15,7 +15,7 @@
         
         <div id="header">
             <div id="logo">
-                yabe. <span>administration</span>
+                E-Health. <span>Management System</span>
             </div>
             <ul id="tools">
                 <li>
@@ -32,25 +32,25 @@
                 </li>
                 #{secure.check 'admin'}
                     <li class="${request.controller == 'Admins' ? 'selected' : ''}">
-                        <a href="@{Admins.list()}">Posts</a>
+                        <a href="@{Admins.list()}">Admins</a>
                     </li>
                     <li class="${request.controller == 'Appointments' ? 'selected' : ''}">
-                        <a href="@{Appointments.list()}">Tags</a>
+                        <a href="@{Appointments.list()}">Appointments</a>
                     </li>
                     <li class="${request.controller == 'Departments' ? 'selected' : ''}">
-                        <a href="@{Departments.list()}">Comments</a>
+                        <a href="@{Departments.list()}">Departments</a>
                     </li>
                     <li class="${request.controller == 'Doctors' ? 'selected' : ''}">
-                        <a href="@{Doctors.list()}">Users</a>
+                        <a href="@{Doctors.list()}">Doctors</a>
                     </li>
                     <li class="${request.controller == 'Medical_Reports' ? 'selected' : ''}">
-                        <a href="@{Medical_Reports.list()}">Users</a>
+                        <a href="@{Medical_Reports.list()}">Medical_Reports</a>
                     </li>
                     <li class="${request.controller == 'Patients' ? 'selected' : ''}">
-                        <a href="@{Patients.list()}">Users</a>
+                        <a href="@{Patients.list()}">Patients</a>
                     </li>
                     <li class="${request.controller == 'Transactions' ? 'selected' : ''}">
-                        <a href="@{Transactions.list()}">Users</a>
+                        <a href="@{Transactions.list()}">Transactions</a>
                     </li>
                     <li class="${request.controller == 'Users' ? 'selected' : ''}">
                         <a href="@{Users.list()}">Users</a>
