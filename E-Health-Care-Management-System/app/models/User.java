@@ -1,36 +1,35 @@
 package models;
 
-import play.*;
 import play.db.jpa.*;
- 
-import javax.persistence.*;
+
+import java.sql.Time;
 import java.util.*;
+import javax.persistence.*;
 
 
 @Entity
 public class User extends Model{
-	public String _username;
-	public String _password;
-	private int _userId;
-	public String _name;
-	public String _gender;
-	public String _dOB;
-	public String _address;
-	public int _phone;
+    @Column(unique = true, nullable = false)
+    public String username;
 
-	public void Login() {
-		throw new UnsupportedOperationException();
-	}
+    @Column(nullable = false)
+    public String password;
+    public UserType userType;
+    public String fullName;
+    public Gender gender;
+    public Date DOB;
+    public int age;
+    public String address;
 
-	public void Logout() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void ChangePassword() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void ChangeInformation() {
-		throw new UnsupportedOperationException();
-	}
+    public User(UserType userType, String username, String password, String fullName,
+                Gender gender, Date DOB, int age, String address){
+                    this.userType = userType;
+                    this.username = username;
+                    this.password = password;
+                    this.fullName = fullName;
+                    this.gender = gender;
+                    this.DOB = DOB;
+                    this.age = age;
+                    this.address = address;
+                }
 }
