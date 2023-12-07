@@ -1,2 +1,2 @@
 # E-Health-Care-Management-System
-Version-1.1 ini kita menambahkan module CRUD pada aplikasi EHCMS
+Version-1.2 ini kita menambahkan module Login pada aplikasi EHCMS
