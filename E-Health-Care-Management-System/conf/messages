@@ -1,3 +1,17 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+
+Admins=Admin
+Appointments=Appointment
+Departments=Department
+Doctors=Doctor
+Medical_Reports=Medical Report
+Pages=Page
+Patients=Patient
+Transactions=Transaction
+Users=User
+
+secure.username=Username:
+secure.password=Password:
+secure.signin=Log in now
