@@ -1,0 +1,393 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Use Case Diagram - Use Case Diagram for Patient</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		E-Health Care Management System	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Use Case Diagram - Use Case Diagram for Patient		</span>
+<a onclick="javascript: showVpLink('E-Health Care Management System.vpp://diagram/JwB3LDGGAqBwARJk', 'Use Case Diagram for Patient\nE-Health Care Management System.vpp://diagram/JwB3LDGGAqBwARJk', 'Use Case Diagram for Patient', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: absolute; top: 0; left: 0; z-index: 20;" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),hideLinkPopup(),hideReferencedBys();">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin('diagram', this.value);hideLinkPopup();showSpotLight('diagram', this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|17.0|231.0|30.0|60.0|Actor_LEp3LDGGAqBwARJ3.html|Actor_LEp3LDGGAqBwARJ3.html|LEp3LDGGAqBwARJ2" id="optionLEp3LDGGAqBwARJ2">Patient : Actor</option>
+<option value="shape|241.0|95.0|112.0|60.0|UseCase_OoLdLDGGAqBwAQwn.html|UseCase_OoLdLDGGAqBwAQwn.html|9Nj3LDGGAqBwARKY" id="option9Nj3LDGGAqBwARKY">Views : Use Case</option>
+<option value="shape|556.0|2.0|112.0|51.0|UseCase_ChR9LDGGAqBwAQzC.html|UseCase_ChR9LDGGAqBwAQzC.html|SZz3LDGGAqBwARLS" id="optionSZz3LDGGAqBwARLS">ListDepartments : Use Case</option>
+<option value="shape|563.0|340.0|105.0|44.0|UseCase_8RZ9LDGGAqBwAQzW.html|UseCase_8RZ9LDGGAqBwAQzW.html|_RyvLDGGAqBwARPl" id="option_RyvLDGGAqBwARPl">Doctors : Use Case</option>
+<option value="shape|562.0|247.0|107.0|50.0|UseCase_8RZ9LDGGAqBwAQzW.html|UseCase_8RZ9LDGGAqBwAQzW.html|VGkvLDGGAqBwAROe" id="optionVGkvLDGGAqBwAROe">Doctors : Use Case</option>
+<option value="shape|241.0|247.0|112.0|59.0|UseCase_z_QvLDGGAqBwAROF.html|UseCase_z_QvLDGGAqBwAROF.html|z_QvLDGGAqBwAROE" id="optionz_QvLDGGAqBwAROE">Appointments : Use Case</option>
+<option value="shape|241.0|358.0|112.0|64.0|UseCase_H1CvLDGGAqBwARPM.html|UseCase_H1CvLDGGAqBwARPM.html|H1CvLDGGAqBwARPL" id="optionH1CvLDGGAqBwARPL">Services : Use Case</option>
+<option value="shape|563.0|407.0|106.0|42.0|UseCase_QMKvLDGGAqBwARP4.html|UseCase_QMKvLDGGAqBwARP4.html|gMKvLDGGAqBwARP3" id="optiongMKvLDGGAqBwARP3">Medical Report : Use Case</option>
+<option value="shape|564.0|505.0|105.0|47.0|UseCase_zXJvLDGGAqBwARRj.html|UseCase_zXJvLDGGAqBwARRj.html|h69cbDGGAqBwARNC" id="optionh69cbDGGAqBwARNC">Payments : Use Case</option>
+<option value="shape|556.0|83.0|112.0|50.0|UseCase_6g4_rDGGAqBwAQ0J.html|UseCase_6g4_rDGGAqBwAQ0J.html|m6T3LDGGAqBwARKs" id="optionm6T3LDGGAqBwARKs">ListDoctors : Use Case</option>
+<option value="shape|557.0|154.0|112.0|50.0|UseCase_EOvEbDGGAqBwAQ_W.html|UseCase_EOvEbDGGAqBwAQ_W.html|EOvEbDGGAqBwAQ_U" id="optionEOvEbDGGAqBwAQ_U">ViewReports : Use Case</option>
+<option value="shape|241.0|500.0|112.0|58.0|UseCase_CrVcbDGGAqBwARMp.html|UseCase_CrVcbDGGAqBwARMp.html|CrVcbDGGAqBwARMo" id="optionCrVcbDGGAqBwARMo">Transactions : Use Case</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: relative; top: 24;">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/Use_Case_Diagram_for_Patient.png" usemap="#diagram_map" class="Image" width="673" height="562"/>
+					<map name="diagram_map">
+<area imageId="diagram" coords="556.0, 45.203007, 320.0, 94.0, 320.14285, 95.0, 353.0, 95.0, 353.0, 101.590225, 588.0, 53.0, 556.0, 53.0, 556.0, 45.203007" coords2="556.0, 45.203007, 320.0, 94.0, 320.14285, 95.0, 353.0, 95.0, 353.0, 101.590225, 588.0, 53.0, 556.0, 53.0, 556.0, 45.203007" shape="poly" alt=":Extend" id="areadiagram_map_pz_3LDGGAqBwARMK_default" href="Extend_kq8zLDGGAqBwAQ_E.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="353.0, 263.0, 353.0, 277.0, 562.0, 277.0, 562.0, 263.0" coords2="353.0, 263.0, 353.0, 277.0, 562.0, 277.0, 562.0, 263.0" shape="poly" alt=":Extend" id="areadiagram_map_mpMvLDGGAqBwARO8_default" href="Extend_0JMvLDGGAqBwARO6.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="601.0, 333.0, 308.0, 353.0, 308.0, 358.0, 353.0, 358.0, 353.0, 363.9283, 353.0, 363.9283, 563.0, 349.59384, 563.0, 349.59384, 563.0, 340.0, 601.0, 340.0, 601.0, 333.0" coords2="601.0, 333.0, 308.0, 353.0, 308.0, 358.0, 353.0, 358.0, 353.0, 363.9283, 353.0, 363.9283, 563.0, 349.59384, 563.0, 349.59384, 563.0, 340.0, 601.0, 340.0, 601.0, 333.0" shape="poly" alt=":Extend" id="areadiagram_map_QbFvLDGGAqBwARR__default" href="Extend_nLFvLDGGAqBwARR9.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="353.0, 392.33582, 353.0, 406.33582, 353.0, 406.33582, 563.0, 413.38806, 563.0, 413.38806, 563.0, 407.0, 611.0, 407.0, 611.0, 401.0, 353.0, 392.33582" coords2="353.0, 392.33582, 353.0, 406.33582, 353.0, 406.33582, 563.0, 413.38806, 563.0, 413.38806, 563.0, 407.0, 611.0, 407.0, 611.0, 401.0, 353.0, 392.33582" shape="poly" alt=":Extend" id="areadiagram_map_iRVvLDGGAqBwARSP_default" href="Extend_khVvLDGGAqBwARSN.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="241.0, 146.12173, 39.742268, 231.0, 47.0, 231.0, 47.0, 243.04782, 255.7732, 155.0, 241.0, 155.0, 241.0, 146.12173" coords2="241.0, 146.12173, 39.742268, 231.0, 47.0, 231.0, 47.0, 243.04782, 255.7732, 155.0, 241.0, 155.0, 241.0, 146.12173" shape="poly" alt=":Association" id="areadiagram_map_SYrvLDGGAqBwARTS_default" href="Association_korvLDGGAqBwARTN.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="47.0, 257.0, 47.0, 271.0, 241.0, 271.0, 241.0, 257.0" coords2="47.0, 257.0, 47.0, 271.0, 241.0, 271.0, 241.0, 257.0" shape="poly" alt=":Association" id="areadiagram_map_EWbvLDGGAqBwARTn_default" href="Association_fGbvLDGGAqBwARTi.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="47.0, 268.92175, 47.0, 284.0087, 241.0, 364.9826, 241.0, 364.9826, 241.0, 358.0, 260.41666, 358.0, 47.0, 268.92175" coords2="47.0, 268.92175, 47.0, 284.0087, 241.0, 364.9826, 241.0, 364.9826, 241.0, 358.0, 260.41666, 358.0, 47.0, 268.92175" shape="poly" alt=":Association" id="areadiagram_map_rD7vLDGGAqBwART8_default" href="Association_t97vLDGGAqBwART3.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="353.0, 106.0, 353.0, 120.0, 556.0, 120.0, 556.0, 106.0" coords2="353.0, 106.0, 353.0, 120.0, 556.0, 120.0, 556.0, 106.0" shape="poly" alt=":Extend" id="areadiagram_map_5GzAbDGGAqBwAQ3Z_default" href="Extend_l4s_rDGGAqBwAQ0j.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="353.0, 131.69768, 353.0, 145.69768, 353.0, 145.69768, 557.0, 159.93024, 557.0, 159.93024, 557.0, 154.0, 601.0, 154.0, 601.0, 149.0, 353.0, 131.69768" coords2="353.0, 131.69768, 353.0, 145.69768, 353.0, 145.69768, 557.0, 159.93024, 557.0, 159.93024, 557.0, 154.0, 601.0, 154.0, 601.0, 149.0, 353.0, 131.69768" shape="poly" alt=":Extend" id="areadiagram_map_4t_EbDGGAqBwAQ_y_default" href="Extend_7N_EbDGGAqBwAQ_w.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="353.0, 521.0, 353.0, 535.0, 564.0, 535.0, 564.0, 521.0" coords2="353.0, 521.0, 353.0, 535.0, 564.0, 535.0, 564.0, 521.0" shape="poly" alt=":Extend" id="areadiagram_map_Ae3cbDGGAqBwARN1_default" href="Extend_Ru3cbDGGAqBwARNz.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="56.0, 296.0, 46.0, 306.0, 241.0, 509.47827, 241.0, 509.47827, 241.0, 500.0, 251.5, 500.0, 56.0, 296.0" coords2="56.0, 296.0, 46.0, 306.0, 241.0, 509.47827, 241.0, 509.47827, 241.0, 500.0, 251.5, 500.0, 56.0, 296.0" shape="poly" alt=":Association" id="areadiagram_map_VBa8bDGGAqBwAROm_default" href="Association_u_a8bDGGAqBwAROh.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="564, 505, 669, 552" coords2="564, 505, 669, 552" shape="rect" alt="Payments:Use Case" id="areadiagram_map_h69cbDGGAqBwARNC_default" href="UseCase_zXJvLDGGAqBwARRj.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="241, 500, 353, 558" coords2="241, 500, 353, 558" shape="rect" alt="Transactions:Use Case" id="areadiagram_map_CrVcbDGGAqBwARMo_default" href="UseCase_CrVcbDGGAqBwARMp.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="557, 154, 669, 204" coords2="557, 154, 669, 204" shape="rect" alt="ViewReports:Use Case" id="areadiagram_map_EOvEbDGGAqBwAQ_U_default" href="UseCase_EOvEbDGGAqBwAQ_W.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="563, 407, 669, 449" coords2="563, 407, 669, 449" shape="rect" alt="Medical Report:Use Case" id="areadiagram_map_gMKvLDGGAqBwARP3_default" href="UseCase_QMKvLDGGAqBwARP4.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="563, 340, 668, 384" coords2="563, 340, 668, 384" shape="rect" alt="Doctors:Use Case" id="areadiagram_map__RyvLDGGAqBwARPl_default" href="UseCase_8RZ9LDGGAqBwAQzW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="241, 358, 353, 422" coords2="241, 358, 353, 422" shape="rect" alt="Services:Use Case" id="areadiagram_map_H1CvLDGGAqBwARPL_default" href="UseCase_H1CvLDGGAqBwARPM.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="562, 247, 669, 297" coords2="562, 247, 669, 297" shape="rect" alt="Doctors:Use Case" id="areadiagram_map_VGkvLDGGAqBwAROe_default" href="UseCase_8RZ9LDGGAqBwAQzW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="241, 247, 353, 306" coords2="241, 247, 353, 306" shape="rect" alt="Appointments:Use Case" id="areadiagram_map_z_QvLDGGAqBwAROE_default" href="UseCase_z_QvLDGGAqBwAROF.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="556, 2, 668, 53" coords2="556, 2, 668, 53" shape="rect" alt="ListDepartments:Use Case" id="areadiagram_map_SZz3LDGGAqBwARLS_default" href="UseCase_ChR9LDGGAqBwAQzC.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="556, 83, 668, 133" coords2="556, 83, 668, 133" shape="rect" alt="ListDoctors:Use Case" id="areadiagram_map_m6T3LDGGAqBwARKs_default" href="UseCase_6g4_rDGGAqBwAQ0J.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="241, 95, 353, 155" coords2="241, 95, 353, 155" shape="rect" alt="Views:Use Case" id="areadiagram_map_9Nj3LDGGAqBwARKY_default" href="UseCase_OoLdLDGGAqBwAQwn.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="17, 231, 47, 291" coords2="17, 231, 47, 291" shape="rect" alt="Patient:Actor" id="areadiagram_map_LEp3LDGGAqBwARJ2_default" href="Actor_LEp3LDGGAqBwARJ3.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+				Model Elements			</td>
+		</tr>
+		<tr>
+			<td style="height: 5px">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="30%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="Actor_LEp3LDGGAqBwARJ3.html" class="ItemLink">Patient : Actor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="UseCase_OoLdLDGGAqBwAQwn.html" class="ItemLink">Views : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="UseCase_ChR9LDGGAqBwAQzC.html" class="ItemLink">ListDepartments : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="UseCase_8RZ9LDGGAqBwAQzW.html" class="ItemLink">Doctors : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="UseCase_z_QvLDGGAqBwAROF.html" class="ItemLink">Appointments : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="UseCase_H1CvLDGGAqBwARPM.html" class="ItemLink">Services : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="UseCase_QMKvLDGGAqBwARP4.html" class="ItemLink">Medical Report : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="UseCase_zXJvLDGGAqBwARRj.html" class="ItemLink">Payments : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="UseCase_6g4_rDGGAqBwAQ0J.html" class="ItemLink">ListDoctors : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="UseCase_EOvEbDGGAqBwAQ_W.html" class="ItemLink">ViewReports : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="UseCase_CrVcbDGGAqBwARMp.html" class="ItemLink">Transactions : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		E-Health Care Management System	</div>
+</body>
+</html>
