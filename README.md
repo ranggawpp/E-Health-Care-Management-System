@@ -1,6 +1,7 @@
 # Tugas Besar Rekayasa Perangkat Lunak
 ## E-Health Care Management System
-`Nama Anggota : Aditiya Saputra (H1A021011) Rangga Wibisana Putra Pamungkas (H1A021058)`
+`Nama Anggota : Aditiya Saputra (H1A021011) 
+                Rangga Wibisana Putra Pamungkas (H1A021058)`
 
 ### 1. Textual Analysis
 <img src="Diagrams/Screenshot 2023-12-08 160826.png" alt="Textual Analysis">
