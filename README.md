@@ -36,6 +36,6 @@
 
 <img src="Screenshot Aplikasi Play/Screenshot 2023-12-08 161107.png" alt="Doctor Pages">
 
-<img src="Screenshot Aplikasi Play/Screenshot 2023-12-08 161858.png" alt="User CRUD Pages">
+<img src="Screenshot Aplikasi Play/Screenshot 2023-12-08 161128.png" alt="User CRUD Pages">
 
-<img src="Screenshot Aplikasi Play/Screenshot 2023-12-08 161128.png" alt="User CRUD form Pages">
+<img src="Screenshot Aplikasi Play/Screenshot 2023-12-08 161858.png" alt="User CRUD form Pages">
